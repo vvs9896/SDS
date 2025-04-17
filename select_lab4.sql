@@ -66,12 +66,6 @@ SELECT
         FROM Season 
         WHERE id_series = es.id_series
     ) AS season_count,
-    (
-        SELECT STRING_AGG(a2.name, ', ' ORDER BY a2.name)
-        FROM Actor a2
-        JOIN SeriesActor sa2 ON a2.id_actor = sa2.id_actor
-        WHERE sa2.id_series = es.id_series AND sa2.role = 'Главный'
-    ) AS main_cast_members,
     CASE 
         WHEN rs.avg_rating > 8 THEN 'Высокая оценка'
         WHEN rs.avg_rating > 6 THEN 'Средняя оценка'
